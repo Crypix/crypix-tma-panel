@@ -1,39 +1,41 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { LaunchParamsProvider, useLaunchParamsContext } from './context/LaunchParamsProvider';
-import { ApiAxios } from './utils/AxiosInstances';
-import { TonConnectButton, TonConnectUIProvider, useTonAddress } from '@tonconnect/ui-react';
+import { LaunchParamsProvider } from './context/LaunchParamsProvider';
+// import { ApiAxios } from './utils/AxiosInstances';
+import { TonConnectButton, TonConnectUIProvider, useTonAddress, useTonWallet } from '@tonconnect/ui-react';
 
-function Test() {
-	const LaunchParams = useLaunchParamsContext();
+// function Test() {
+// 	const LaunchParams = useLaunchParamsContext();
 
-	console.log(LaunchParams);
-	useEffect(() => {
-		ApiAxios({
-			method: 'POST',
-			url: '/auth',
-			headers: {
-				Authorization: `tma ${LaunchParams.initDataRaw}`,
-			},
-		}).then((res) => {
-			console.log(res);
-		});
-	}, []);
+// 	console.log(LaunchParams);
+// 	useEffect(() => {
+// 		ApiAxios({
+// 			method: 'POST',
+// 			url: '/auth',
+// 			headers: {
+// 				Authorization: `tma ${LaunchParams.initDataRaw}`,
+// 			},
+// 		}).then((res) => {
+// 			console.log(res);
+// 		});
+// 	}, []);
 
-	return <></>;
-}
+// 	return <></>;
+// }
 
 function WalletConnect(): ReactElement {
 	const userFriendlyAddress = useTonAddress();
 	const rawAddress = useTonAddress(false);
+	const wallet = useTonWallet();
 
 	return (
 		<div>
 			<TonConnectButton />
-			<span>User-friendly address: {userFriendlyAddress}</span>
-			<span>Raw address: {rawAddress}</span>
+			<div>User-friendly address: {userFriendlyAddress}</div>
+			<div>Raw address: {rawAddress}</div>
+			<div>current wallet: {wallet ? JSON.stringify(wallet) : null}</div>
 		</div>
 	);
 }
