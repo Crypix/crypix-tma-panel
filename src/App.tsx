@@ -42,10 +42,7 @@ function App() {
 	const [count, setCount] = useState(0);
 
 	return (
-		<TonConnectUIProvider manifestUrl="/src/assets/tonconnect-manifest.json">
-			{/* <LaunchParamsProvider> */}
-			{/* <Test /> */}
-			<WalletConnect />
+		<div>
 			<div>
 				<a href="https://vite.dev" target="_blank">
 					<img src={viteLogo} className="logo" alt="Vite logo" />
@@ -61,8 +58,7 @@ function App() {
 					Edit <code>src/App.tsx</code> and save to test HMR
 				</p>
 			</div>
-			{/* </LaunchParamsProvider> */}
-		</TonConnectUIProvider>
+		</div>
 	);
 }
 
