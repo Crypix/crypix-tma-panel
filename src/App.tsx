@@ -1,9 +1,9 @@
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 // import { ApiAxios } from './utils/AxiosInstances';
-import { TonConnectButton, TonConnectUIProvider, useTonAddress, useTonWallet } from '@tonconnect/ui-react';
+// import { TonConnectButton, useTonAddress, useTonWallet } from '@tonconnect/ui-react';
 
 // function Test() {
 // 	const LaunchParams = useLaunchParamsContext();
@@ -24,20 +24,20 @@ import { TonConnectButton, TonConnectUIProvider, useTonAddress, useTonWallet } f
 // 	return <></>;
 // }
 
-function WalletConnect(): ReactElement {
-	const userFriendlyAddress = useTonAddress();
-	const rawAddress = useTonAddress(false);
-	const wallet = useTonWallet();
+// function WalletConnect(): ReactElement {
+// 	const userFriendlyAddress = useTonAddress();
+// 	const rawAddress = useTonAddress(false);
+// 	const wallet = useTonWallet();
 
-	return (
-		<div>
-			<TonConnectButton />
-			<div>User-friendly address: {userFriendlyAddress}</div>
-			<div>Raw address: {rawAddress}</div>
-			<div>current wallet: {wallet ? JSON.stringify(wallet) : null}</div>
-		</div>
-	);
-}
+// 	return (
+// 		<div>
+// 			<TonConnectButton />
+// 			<div>User-friendly address: {userFriendlyAddress}</div>
+// 			<div>Raw address: {rawAddress}</div>
+// 			<div>current wallet: {wallet ? JSON.stringify(wallet) : null}</div>
+// 		</div>
+// 	);
+// }
 function App() {
 	const [count, setCount] = useState(0);
 
