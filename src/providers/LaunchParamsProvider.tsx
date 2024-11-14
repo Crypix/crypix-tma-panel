@@ -7,7 +7,7 @@ const useLaunchParamsContext = () => {
 	return useContext(LaunchParamsContext);
 };
 
-const LaunchParamsProvider = ({ children }: { children: ReactElement | ReactElement[] }) => {
+const LaunchParamsProvider = ({ children }: { children: ReactElement | ReactElement[] }): ReactElement => {
 	const userLaunchParams = useLaunchParams();
 	return <LaunchParamsContext.Provider value={userLaunchParams}>{children}</LaunchParamsContext.Provider>;
 };
