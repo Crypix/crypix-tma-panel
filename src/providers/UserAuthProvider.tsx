@@ -1,6 +1,6 @@
 import { createContext, useContext, ReactElement, useState, useEffect } from 'react';
 import { useLaunchParamsContext } from './LaunchParamsProvider';
-import { ApiAxios } from '../utils/AxiosInstances';
+import { ApiAxios } from '@utils/AxiosInstances';
 
 import { useUserTonWalletCurrent } from './UserTonWallet';
 

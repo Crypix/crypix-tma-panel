@@ -1,3 +1,3 @@
-import AdorableDuckLoading from '../assets/static/gif/AdorableDuckLoading.gif';
+import AdorableDuckLoading from '@assets/static/gif/AdorableDuckLoading.gif';
 
 export { AdorableDuckLoading };
