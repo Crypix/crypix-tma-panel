@@ -5,6 +5,7 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@shared/*": ["shared/*"],
+			"@interfaces*": ["interface/*"],
 			"@providers/*": ["providers/*"],
 			"@assets/*": ["assets/*"],
 			"@utils/*": ["utils/*"],
