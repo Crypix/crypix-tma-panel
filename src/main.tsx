@@ -1,6 +1,8 @@
 import { createRoot } from 'react-dom/client';
 
 import App from './App.tsx';
+import 'unfonts.css';
+
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { LaunchParamsProvider } from '@providers/LaunchParamsProvider.tsx';
 import { UserTonWalletProvider } from '@providers/UserTonWallet.tsx';

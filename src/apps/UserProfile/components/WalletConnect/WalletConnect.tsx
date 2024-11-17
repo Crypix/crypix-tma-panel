@@ -56,7 +56,7 @@ function ConnectWalletElement() {
 			<img src={AdorableDuckLoading} className="user-wallet__connect-gif" />
 			<motion.div className="user-wallet__connect-info" variants={CardContentAnimation} initial="initial" animate="animate">
 				<p className="user-wallet__connect-text user-wallet__connect-text-primary">You didnt't connected any wallet yet</p>
-				<p className="user-wallet__connect-text">Connect ton wallet to begin buying or selling using $TON with crypix right now!</p>
+				<p className="user-wallet__connect-text">Connect TON wallet to start buying or selling using $TON with crypix right now!</p>
 			</motion.div>
 			<TonConnectButton className="user-wallet__connect-button" />
 		</motion.div>

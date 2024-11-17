@@ -6,10 +6,13 @@
 	--BottomNavigatorIndex: 100;
 
 	.app {
+		min-height: 100vh;
 		&.light_theme {
+			background: linear-gradient(180deg, var(--tg-theme-bg-color), rgba(26, 201, 255, 0.06));
 			--box-shadow-primary: rgba(106, 178, 242, 0.75);
 		}
 		&.dark_theme {
+			background: linear-gradient(180deg, var(--tg-theme-bg-color), rgba(26, 201, 255, 0.04));
 			--box-shadow-primary: rgba(106, 178, 242, 0.45);
 		}
 	}
@@ -31,7 +34,7 @@
 }
 
 * {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Inter';
 	line-height: 1.5;
 	font-weight: 400;
 	font-synthesis: none;
