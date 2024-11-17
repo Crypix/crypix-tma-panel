@@ -1,12 +1,18 @@
-.box {
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	background: red;
-}
-
 #root {
+	--primary-color: #2d83ec;
+	--primary-gradient: linear-gradient(90deg, #2d83ec, #1ac9ff);
+	--error-color: #2d83ec;
+
 	--BottomNavigatorIndex: 100;
+
+	.app {
+		&.light_theme {
+			--box-shadow-primary: rgba(106, 178, 242, 0.75);
+		}
+		&.dark_theme {
+			--box-shadow-primary: rgba(106, 178, 242, 0.45);
+		}
+	}
 
 	--fontT: 10px;
 	--fontS: 12px;

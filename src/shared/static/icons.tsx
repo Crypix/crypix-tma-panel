@@ -1,3 +1,4 @@
+// black
 import CheckmarkIcon from '@assets/static/svg/checkmark.svg?react';
 import DownloadFromTheCloudIcon from '@assets/static/svg/download-from-the-cloud.svg?react';
 import ExternalLinkIcon from '@assets/static/svg/external-link.svg?react';
@@ -9,6 +10,9 @@ import SearchIcon from '@assets/static/svg/search.svg?react';
 import UnavailableIcon from '@assets/static/svg/unavailable.svg?react';
 import UploadToTheCloudIcon from '@assets/static/svg/upload-to-the-cloud.svg?react';
 import WalletIcon from '@assets/static/svg/wallet.svg?react';
+
+// colored
+import TonIcon from '@assets/static/svg/ton.svg?react';
 
 export {
 	CheckmarkIcon,
@@ -22,4 +26,5 @@ export {
 	UnavailableIcon,
 	UploadToTheCloudIcon,
 	WalletIcon,
+	TonIcon,
 };

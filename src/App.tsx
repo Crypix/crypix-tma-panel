@@ -1,18 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import './index.scss';
 import viteLogo from '/vite.svg';
 
-import { useIntegration } from '@telegram-apps/react-router-integration';
-import { bindThemeParamsCSSVars, initNavigator, initThemeParams } from '@telegram-apps/sdk';
-import { Router, Routes, Route, Navigate, Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+import { Routes, Route, Navigate, Link, BrowserRouter } from 'react-router-dom';
+import { motion } from 'motion/react';
 import { UserProfileOutlet } from '@UserProfile/UserProfile';
 import { WalletConnect } from '@UserProfile/components/WalletConnect/WalletConnect';
 
+import { useTelegramSDKMount } from 'hooks/useTelegramSDKMount';
+import { NavigationHistoryProvider } from '@providers/NavigationHistoryProvider';
+import { useTheme } from 'hooks/useTheme';
+import classNames from 'classnames';
+import { ThemeMode } from '@const/theme';
+
 function Home() {
 	const [count, setCount] = useState(0);
+
 	return (
-		<motion.section exit={{ opacity: 0 }}>
+		<motion.section>
 			<div>
 				<a href="https://vite.dev" target="_blank">
 					<img src={viteLogo} className="logo" alt="Vite logo" />
@@ -32,29 +37,23 @@ function Home() {
 }
 
 function App() {
-	const navigator = useMemo(() => initNavigator('app-navigation-state'), []);
-	const [location, reactNavigator] = useIntegration(navigator);
-
-	useEffect(() => {
-		navigator.attach();
-		return () => navigator.detach();
-	}, [navigator]);
-
-	const [tp] = initThemeParams();
-	bindThemeParamsCSSVars(tp);
+	useTelegramSDKMount();
+	const theme = useTheme();
 
 	return (
-		<AnimatePresence mode="wait">
-			<Router location={location} navigator={reactNavigator} key={location.pathname}>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/profile" element={<UserProfileOutlet />}>
-						<Route path="wallet" element={<WalletConnect />} />
-					</Route>
-					<Route path="*" element={<Navigate to="/" />} />
-				</Routes>
-			</Router>
-		</AnimatePresence>
+		<main className={classNames('app', { dark_theme: theme === ThemeMode.DARK, light_theme: theme === ThemeMode.LIGHT })}>
+			<BrowserRouter>
+				<NavigationHistoryProvider>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/profile" element={<UserProfileOutlet />}>
+							<Route path="wallet" element={<WalletConnect />} />
+						</Route>
+						<Route path="*" element={<Navigate to="/" />} />
+					</Routes>
+				</NavigationHistoryProvider>
+			</BrowserRouter>
+		</main>
 	);
 }
 

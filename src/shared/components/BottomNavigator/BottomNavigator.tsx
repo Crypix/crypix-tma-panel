@@ -1,10 +1,10 @@
 import { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import './BottomNavigator.scss';
 import { BNAnimation } from './animation';
-import { hapticFeedback, ImpactHapticFeedbackStyle } from '@telegram-apps/sdk-react';
+import { hapticFeedbackImpactOccurred, ImpactHapticFeedbackStyle } from '@telegram-apps/sdk-react';
 
 interface NavigatorData {
 	url: string;
@@ -15,18 +15,20 @@ interface NavigatorData {
 
 const BottomNavigatorLink = ({ NavigatorLinkData }: { NavigatorLinkData: NavigatorData }) => {
 	return (
-		<Link
-			to={'/'}
-			className="bottom-navigator_link"
+		<NavLink
+			to={NavigatorLinkData.url}
+			className={({ isActive }) => {
+				return `${isActive ? 'bottom-navigator_link__active' : ''} bottom-navigator_link`;
+			}}
 			onClick={() => {
-				if (hapticFeedback.impactOccurred.isAvailable()) {
-					hapticFeedback.impactOccurred(NavigatorLinkData.haptic);
+				if (hapticFeedbackImpactOccurred.isAvailable()) {
+					hapticFeedbackImpactOccurred(NavigatorLinkData.haptic);
 				}
 			}}
 		>
 			{NavigatorLinkData.icon('bottom-navigator_link-icon')}
 			<p className="bottom-navigator_link-label">{NavigatorLinkData.label}</p>
-		</Link>
+		</NavLink>
 	);
 };
 

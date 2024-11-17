@@ -4,6 +4,7 @@
 	"compilerOptions": {
 		"baseUrl": "./src",
 		"paths": {
+			"@hooks/*": ["hooks/*"],
 			"@shared/*": ["shared/*"],
 			"@interfaces*": ["interface/*"],
 			"@providers/*": ["providers/*"],

@@ -3,6 +3,7 @@ import { createContext, useContext, ReactElement, useEffect, useState } from 're
 
 interface UserTonWalletContext {
 	isLoaded: boolean;
+	isConnected: boolean;
 	FullData: Wallet | (Wallet & WalletInfoWithOpenMethod) | null;
 	Current: {
 		UserFriendly: string;
@@ -28,7 +29,12 @@ const useUserTonWalletCurrent = (): UserTonWalletContext['Current'] => {
 
 const UserTonWalletProvider = ({ children }: { children: ReactElement | ReactElement[] }): ReactElement => {
 	const connectionRestored = useIsConnectionRestored();
-	const [UserWalletData, setUserWalletData] = useState<UserTonWalletContext>({ isLoaded: connectionRestored, FullData: null, Current: null });
+	const [UserWalletData, setUserWalletData] = useState<UserTonWalletContext>({
+		isLoaded: connectionRestored,
+		isConnected: false,
+		FullData: null,
+		Current: null,
+	});
 
 	const UserWallet = useTonWallet();
 	const userFriendlyAddress = useTonAddress();
@@ -37,6 +43,7 @@ const UserTonWalletProvider = ({ children }: { children: ReactElement | ReactEle
 	useEffect(() => {
 		setUserWalletData({
 			isLoaded: connectionRestored,
+			isConnected: UserWallet !== null,
 			FullData: UserWallet ?? null,
 			Current: UserWallet
 				? {
@@ -52,4 +59,5 @@ const UserTonWalletProvider = ({ children }: { children: ReactElement | ReactEle
 	return connectionRestored ? <LaunchParamsContext.Provider value={UserWalletData}>{children}</LaunchParamsContext.Provider> : <div>loading</div>;
 };
 
+export type { UserTonWalletContext };
 export { useUserTonWalletContext, UserTonWalletProvider, useUserTonWalletFull, useUserTonWalletCurrent };
