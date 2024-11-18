@@ -12,6 +12,7 @@ import { NavigationHistoryProvider } from '@providers/NavigationHistoryProvider'
 import { useTheme } from 'hooks/useTheme';
 import classNames from 'classnames';
 import { ThemeMode } from '@const/theme';
+import { UserProfile } from '@UserProfile/components/UserProfile/UserProfile';
 
 function Home() {
 	const [count, setCount] = useState(0);
@@ -46,7 +47,8 @@ function App() {
 				<NavigationHistoryProvider>
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/profile" element={<UserProfileOutlet />}>
+						<Route path="/user" element={<UserProfileOutlet />}>
+							<Route path="profile" element={<UserProfile />} />
 							<Route path="wallet" element={<WalletConnect />} />
 						</Route>
 						<Route path="*" element={<Navigate to="/" />} />
